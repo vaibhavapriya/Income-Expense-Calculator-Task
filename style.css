@@ -1,0 +1,112 @@
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    flex-wrap: wrap;
+    background-color: rgb(255, 255, 255);
+    font-family: Verdana, sans-serif;
+    color: #000;
+    align-items: center;
+    justify-content: center;
+}
+.con-head{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    background-color: aqua;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.line2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+h2{
+    font-size: small;
+    padding: 3px;
+}
+.con-add{
+    width: 100vw;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.con-add button{
+    background-color: aqua;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+.add-pop {
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-style: solid;
+    border-color: aqua;
+    padding: 30px;
+    border-radius: 20px;
+}
+.con-list{
+    padding: 30px;
+    width: 100vw;
+    display: flex ;
+    flex-direction:column ;
+    justify-content: center;
+    align-items: center;
+}
+.data{
+    padding: 15px;
+    border-radius: 20px;
+    display: flex ;
+    flex-direction: row;
+    width: 100%;
+    /* border-style: solid; */
+    background-color: aquamarine;
+    justify-content: space-evenly;
+}
+.data .on-hover button{
+    background-color: whitesmoke;
+    padding: 5px;
+    border-radius: 10px;
+    width: 100%;
+    border:none
+}
+@media only screen and (min-width: 600px) {
+    .cards-container{       
+        padding: 5px;
+        display: grid;
+        grid-template-rows: 150px 150px ;
+        grid-template-columns: 150px 150px 150px 150px ;
+        grid-gap: 20px 10px;
+        place-items: center;
+    }
+    h1{
+        font-size: 40px;
+        color: rgb(145, 45, 227); 
+    } 
+    
+}
+@media only screen and (min-width: 1022px) {
+    .cards-container{
+        padding: 10px;
+        display: grid;
+        grid-template-rows: 200px 200px ;
+        grid-template-columns: 200px 200px 200px 200px;
+        grid-gap: 20px 10px;
+        place-items: center;
+        justify-content: center;
+    }  
+    h1{
+        font-size: 40px;
+        color: rgb(145, 45, 227); 
+    }  
+}
