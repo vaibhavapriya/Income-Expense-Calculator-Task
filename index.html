@@ -15,30 +15,82 @@
     />
 </head>
 <body>
-	<div class="con-head">
-		<!-- balance -->
-		<div class="line1"><h1>BALANCE: ₹0</h1></div>
-		<div class="line2"><h2>INCOME: ₹0 </h2><h2>EXPENSE: ₹0</h2></div>
+	<div class="container">
+		<div class="con-head">
+			<!-- balance -->
+			<div class="line1"><h1>BALANCE: ₹0</h1></div>
+			<div class="line2"><h2>INCOME: ₹0 </h2><h2>EXPENSE: ₹0</h2></div>
+		</div>
 	</div>
 	<div class="con-add">
 		<!-- income/expense -->
 		<div>
-			<button><i></i>+ income</button>
+			<button id="income-button">+ income</button>
 		</div>
 		<div>
-			<button><i></i>+ expense</button>
+			<button id="expense-button">+ expense</button>
 		</div>
 	</div>
-	<div class="add-pop">
-		<!-- categorie -->
-		<div>dropdown form</div>
-		<!-- name -->
-		<div>name</div>
-		<!-- amount -->
-		<div>₹</div>
+	<div class="add-popi">
+		<!-- categorie,name,amount  -->
+		
+		<!--<div>dropdown form</div> -->
+		<!-- <div>name</div> -->
+		<!-- <div>₹</div> -->
+		<form>
+			<select name="type" id="">
+				<option value="salary">Salary</option>
+				<option value="passive">Passive</option>
+				<option value="investment">Investment</option>
+				<option value="others">Others</option>
+			</select>
+			<input type="text">
+			<input type="number">
+			<input type="button" value="submit" id="income-submit">
+		</form>
+	</div>
+	<div class="add-pope">
+		<!-- categorie,name,amount  -->
+		
+		<!--<div>dropdown form</div> -->
+		<!-- <div>name</div> -->
+		<!-- <div>₹</div> -->
+		<form>
+			<select name="type" id="">
+				<option value="groceries">Groceries</option>
+				<option value="housing">Housing</option>
+				<option value="tax">Tax</option>
+				<option value="savings">Savings</option>
+				<option value="transporation">Transporation</option>
+				<option value="entertainment">Entertainment</option>
+				<option value="shopping">Shopping</option>
+				<option value="others">Others</option>
+			  </select>
+			<input type="text">
+			<input type="number">
+			<input type="button" value="submit" id="expense-submit">
+		</form>
 	</div>
 	<div class="con-list">
 		<!-- Include 3 filters [ “all”, “income”, “expense” ] to get only the needed data. (use radio buttons) -->
+		<div class="data">
+			<!-- categorie -->
+			<div>expense</div>
+			<!-- name -->
+			<div>name</div>
+			<!-- amount -->
+			<div>- ₹</div>
+			<div class="on-hover">		
+				<!-- edit -->
+				<div>
+					<button><i></i>pen</button>
+				</div>
+				<!-- delete -->
+				<div>
+					<button><i></i>dustbin</button>
+				</div>
+			</div>
+		</div>
 		<div class="data">
 			<!-- categorie -->
 			<div>expense</div>

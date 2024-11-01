@@ -14,8 +14,10 @@ body{
     align-items: center;
     justify-content: center;
 }
-.con-head{
+.container{
     width: 100vw;
+}
+.con-head{
     display: flex;
     flex-direction: column;
     background-color: aqua;
@@ -24,15 +26,18 @@ body{
     justify-content: center;
 }
 .line2{
+    width: 100vw;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 h2{
     font-size: small;
+    margin-top: 10px;
     padding: 3px;
 }
 .con-add{
+    margin-top: 25px;
     width: 100vw;
     padding: 20px;
     display: flex;
@@ -44,17 +49,40 @@ h2{
     padding: 10px;
     border-radius: 10px;
     border: none;
+    cursor: pointer;
 }
-.add-pop {
+.add-popi,.add-pope {
     width: 75%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    background-color: aliceblue;
     border-style: solid;
     border-color: aqua;
     padding: 30px;
     border-radius: 20px;
+    position: fixed;
+    margin-top: 190px;
+    visibility: hidden;
+    /*  position: absolute; */
 }
+/* dom */
+.add-popi.show,.add-pope.show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+form{
+    display: flex;
+    flex-direction: column;
+}
+input,select{
+    margin-top: 10px;
+    border: none;
+    font-size: medium;
+    padding: 5px;
+}
+
 .con-list{
     padding: 30px;
     width: 100vw;
@@ -72,6 +100,7 @@ h2{
     /* border-style: solid; */
     background-color: aquamarine;
     justify-content: space-evenly;
+    margin-bottom: 20px;
 }
 .data .on-hover button{
     background-color: whitesmoke;
@@ -110,3 +139,14 @@ h2{
         color: rgb(145, 45, 227); 
     }  
 }
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
