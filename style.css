@@ -83,7 +83,7 @@ input,select{
     padding: 5px;
 }
 
-.con-list{
+.con-list, .data{
     padding: 30px;
     width: 100vw;
     display: flex ;
@@ -91,7 +91,7 @@ input,select{
     justify-content: center;
     align-items: center;
 }
-.data{
+.info{
     padding: 15px;
     border-radius: 20px;
     display: flex ;
@@ -102,38 +102,34 @@ input,select{
     justify-content: space-evenly;
     margin-bottom: 20px;
 }
+.on-hover{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    /* border-style: solid; */
+    background-color: aquamarine;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 20px;
+}
 .data .on-hover button{
-    background-color: whitesmoke;
+    background-color: rgb(255, 192, 201);
     padding: 5px;
     border-radius: 10px;
     width: 100%;
-    border:none
+    border:none;
+    width: 100px;
 }
 @media only screen and (min-width: 600px) {
-    .cards-container{       
-        padding: 5px;
-        display: grid;
-        grid-template-rows: 150px 150px ;
-        grid-template-columns: 150px 150px 150px 150px ;
-        grid-gap: 20px 10px;
-        place-items: center;
-    }
     h1{
         font-size: 40px;
         color: rgb(145, 45, 227); 
     } 
     
 }
-@media only screen and (min-width: 1022px) {
-    .cards-container{
-        padding: 10px;
-        display: grid;
-        grid-template-rows: 200px 200px ;
-        grid-template-columns: 200px 200px 200px 200px;
-        grid-gap: 20px 10px;
-        place-items: center;
-        justify-content: center;
-    }  
+@media only screen and (min-width: 1022px) { 
     h1{
         font-size: 40px;
         color: rgb(145, 45, 227); 
