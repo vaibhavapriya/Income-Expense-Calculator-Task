@@ -47,7 +47,7 @@
 	<div class="add-pope">
 		<form>
 			<select name="type" id="et" required>
-				<option value="groceries">Monthly Expense</option>
+				<option value="monthly expense">Monthly Expense</option>
 				<option value="housing">Housing</option>
 				<option value="tax">Tax</option>
 				<option value="savings">Savings</option>
@@ -74,22 +74,21 @@
 						
 		</div>
 		<div class="list">
-			<div class="items">
-				<div><button>edit icon</button></div>
+			<div id="item" class="items hidden">
+				<div><button class="btn" onclick="">edit</button></div>
 				<div>
-					<div>income/expense</div>
-					<div>catogery</div>
-					<div>name</div>
+					<div class="ie"></div>
+					<div class="type"></div>
+					<div class="name"></div>
 				</div>
-				<div>amount</div>
-				
+				<div class="amount"></div>				
 			</div>
 			<div class="items">
 				<div><button>edit icon</button></div>
 				<div>
-					<div>income/expense</div>
-					<div>catogery</div>
-					<div>name</div>
+					<div class="ie">income/expense</div>
+					<div class="type">catogery</div>
+					<div class="amount">name</div>
 				</div>
 				<div>amount</div>
 				
