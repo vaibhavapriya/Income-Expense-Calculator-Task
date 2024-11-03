@@ -82,45 +82,36 @@ input,select{
     font-size: medium;
     padding: 5px;
 }
-
-.con-list, .data{
-    padding: 30px;
-    width: 100vw;
+.con-list{
+    padding: 20px;
+    width: 90%;
     display: flex ;
     flex-direction:column ;
     justify-content: center;
     align-items: center;
+    background-color: aqua;
+    border-radius: 30px;
 }
-.info{
-    padding: 15px;
-    border-radius: 20px;
-    display: flex ;
-    flex-direction: row;
+.filter ,.list{
     width: 100%;
-    /* border-style: solid; */
-    background-color: aquamarine;
-    justify-content: space-evenly;
-    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
-.on-hover{
+.filter button{
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+.items{
+    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    width: 100%;
-    /* border-style: solid; */
-    background-color: aquamarine;
-    justify-content: space-evenly;
-    margin-bottom: 20px;
-    padding: 15px;
-    border-radius: 20px;
-}
-.data .on-hover button{
-    background-color: rgb(255, 192, 201);
-    padding: 5px;
-    border-radius: 10px;
-    width: 100%;
-    border:none;
-    width: 100px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 10px;
 }
 @media only screen and (min-width: 600px) {
     h1{

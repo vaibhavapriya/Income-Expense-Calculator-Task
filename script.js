@@ -6,13 +6,6 @@ const popupe = document.getElementsByClassName("add-pope")[0];
 //on click for popup
 in_b.addEventListener("click",function(){
     popupi.classList.toggle("show");
-    debugger;
-    // add the income to list
-    // const sub_i=document.getElementById("income-submit");
-    // sub_i.addEventListener("click",function(){
-    //     list[i].id=i;
-    //     list[i].ie="income";
-    // });
 });
 ex_b.addEventListener("click",function(){
     popupe.classList.toggle("show");
@@ -25,26 +18,34 @@ in_s.addEventListener("click",function(){
     const t=document.getElementById("it");
     const n =document.getElementById("in");
     const a  =document.getElementById("ia");
-    let obj={};
-    obj.id=i;   
-    obj.ie="income";
-    obj.type=t;
-    obj.name=n;
-    obj.amount=a;
-    list.push(obj);
+    if(t && n && a){
+        let obj={};
+        obj.id=i;   
+        obj.ie="income";
+        obj.type=t;
+        obj.name=n;
+        obj.amount=a;
+        list.push(obj);
+        i++;
+        //add item to items
+        //change con- head
+    }
     popupi.classList.toggle("show");
-    i++;
 });
 ex_s.addEventListener("click",function(){
     const t=document.getElementById("et");
     const n=document.getElementById("en");
     const a=document.getElementById("ea");
-    let obj={id:i,ie:"expense",type:t,name:n,amount:a};
-    list.push(obj);
+    if(t&&n&&a){
+        let obj={id:i,ie:"expense",type:t,name:n,amount:a};
+        list.push(obj);   
+        i++;
+        debugger;
+        //add item to items
+        //change con-head
+    }
     popupe.classList.toggle("show");
-    i++;
 });
-const newItem=document.getElementsByClassName("info")[0];
 
 // add income
 // add expense
