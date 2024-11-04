@@ -5,7 +5,7 @@ const ex_b=document.getElementById("expense-button");
 const popupi = document.getElementsByClassName("add-popi")[0];
 const popupe = document.getElementsByClassName("add-pope")[0];
 const editpop = document.getElementsByClassName("edit-pop")[0];
-//submit buttons inform
+//submit buttons form
 const in_s=document.getElementById("income-submit");
 const ex_s=document.getElementById("expense-submit");
 //list and items
@@ -70,7 +70,6 @@ ex_s.addEventListener("click",function(){
     clearInputFieldse();
     popupe.classList.toggle("show");
 });
-//edit i/e
 //change header display
 //filter
 //pie chart
@@ -85,6 +84,7 @@ function addItem(object,index){
     newItem.querySelector(".amount").innerText=object.amount || "N/A";
     newItem.querySelector(".btn1").setAttribute("onclick", `edit('${object.id}')`);
     newItem.querySelector(".btn2").setAttribute("onclick", `del('${object.id}')`);
+    newItem.classList.add(object.ie);
     itemList.appendChild(newItem);
     // var newdiv=document.createElement("div");
     // newdiv.classList.add("items");
@@ -134,6 +134,35 @@ function del(index){
     list.splice(objIndex,1);
     var d=document.getElementById(index);
     d.remove();
+}
+function filter(cat){
+    const nListin=document.querySelectorAll(".income");
+    const nListex=document.querySelectorAll(".expense");
+    if(cat=="all"){       
+        for(j=0;j<nListin.length;j++){
+            nListin[j].classList.remove("hidden");
+        }      
+        for(j=0;j<nListex.length;j++){
+            nListex[j].classList.remove("hidden");
+        }
+    }
+    else if(cat=="income"){
+        for(j=0;j<nListin.length;j++){
+            nListin[j].classList.remove("hidden");
+        }      
+        for(j=0;j<nListex.length;j++){
+            nListex[j].classList.add("hidden");
+        }
+    }
+    else if(cat=="expense"){
+        for(j=0;j<nListin.length;j++){
+            nListin[j].classList.add("hidden");
+        }      
+        for(j=0;j<nListex.length;j++){
+            nListex[j].classList.remove("hidden");
+        }
+    }
+    debugger;
 }
 
 //for filter we can use hidden function
