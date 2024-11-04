@@ -11,7 +11,7 @@ const ex_s=document.getElementById("expense-submit");
 //list and items
 const itemList = document.getElementsByClassName("list")[0];
 const item=document.getElementById("item");
-list=[];
+list = JSON.parse(localStorage.getItem("list")) || [];
 var i=0;
 var editindex=null;
 //balance,income,expense(header)
@@ -47,6 +47,7 @@ in_s.addEventListener("click",function(){
             //add item to UI
             addItem(obj,i);
         }
+        localStorage.setItem("list", JSON.stringify(list));
         //change con-head
         balance+=parseInt(a);
         income_a+=parseInt(a);
@@ -74,6 +75,7 @@ ex_s.addEventListener("click",function(){
             //add item to UI       
             addItem(obj,i);
         }
+        localStorage.setItem("list", JSON.stringify(list));
         //change con-head
         balance-=parseInt(a);
         expense_a+=parseInt(a);
@@ -85,7 +87,7 @@ ex_s.addEventListener("click",function(){
 });
 //change header display
 //pie chart
-function addItem(object,index){
+function addItem(object){
     const newItem = item.cloneNode(true);
     newItem.id = object.id;
     newItem.classList.remove("hidden");
@@ -155,6 +157,7 @@ function del(index){
         expense_a-=parseInt(list[objIndex].amount);
     }
     list.splice(objIndex,1);
+    localStorage.setItem("list", JSON.stringify(list));
     var d=document.getElementById(index);
     d.remove();
     bal(balance,income_a,expense_a);
@@ -221,4 +224,24 @@ function bal(b,inc,ex){
     document.getElementById("s2").textContent=inc;
     document.getElementById("s3").textContent=ex;
 }
+//reload().addEventListener("click")
+// reload the current page
+//window.location.reload();
+function display(list){
+    list.forEach(function (item) {
+        const newItem = item.cloneNode(true);
+        newItem.id = object.id;
+        newItem.classList.remove("hidden");
+        //newItem.querySelector(".btn").innerElement=newItem.createTextNode("edit");
+        newItem.querySelector(".ie").innerText=object.ie || "N/A";
+        newItem.querySelector(".type").innerText=object.type || "N/A";
+        newItem.querySelector(".name").innerText=object.name || "N/A";
+        newItem.querySelector(".amount").innerText=object.amount || "N/A";
+        newItem.querySelector(".btn1").setAttribute("onclick", `edit('${object.id}')`);
+        newItem.querySelector(".btn2").setAttribute("onclick", `del('${object.id}')`);
+        newItem.classList.add(object.ie);
+        itemList.appendChild(newItem);
+    });
+}
+
 
