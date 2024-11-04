@@ -99,11 +99,6 @@ input,select{
     justify-content: center;
     align-items: center;   
 }
-.filter button{
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
-}
 .list{
     background-color: aquamarine;
 }
@@ -130,6 +125,19 @@ input,select{
 }
 .name{
     font-size: large;
+}
+i{
+    font-size: medium;
+    padding: 2px;
+}
+.end{
+    padding: 15px;
+}
+.end button{
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 79, 79, 0.937);
 }
 .hidden {
     display: none;

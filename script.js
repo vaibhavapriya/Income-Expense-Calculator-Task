@@ -12,12 +12,14 @@ const ex_s=document.getElementById("expense-submit");
 const itemList = document.getElementsByClassName("list")[0];
 const item=document.getElementById("item");
 list = JSON.parse(localStorage.getItem("list")) || [];
-var i=list.length;
 var editindex=null;
 //balance,income,expense(header)let balance=0;
 let balance=parseInt(localStorage.getItem("amount")) || 0 ;
 let income_a=parseInt(localStorage.getItem("income_a")) || 0;
 let expense_a=parseInt(localStorage.getItem("expense_a")) ||0;
+let i=parseInt(localStorage.getItem("i")) ||0;
+let divincome="income";
+let divexpense="expense";
 //on click for popup
 in_b.addEventListener("click",function(){
     popupi.classList.toggle("show");
@@ -31,15 +33,16 @@ in_s.addEventListener("click",function(){
     const a  =document.getElementById("ia").value.trim();
     if(t && n && a){
         if(editindex != null){
-            list[editindex]={id:editindex,ie:"income",type:t,name:n,amount:a};
-            editItem(list[editindex],editindex);
+            list[editindex]={id:parseInt(list[editindex].id),iore:divincome,type:t,name:n,amount:a};
+            editItem(list[editindex],list[editindex].id);
             editindex=null;
         }
         else {
             //let obj={};obj.id=i;    obj.ie="income";obj.type=t;obj.name=n;obj.amount=a;
-            let obj={id:i,ie:"income",type:t,name:n,amount:a};
+            let obj={id:i,iore:divincome,type:t,name:n,amount:a};
             list.push(obj);
             i++;
+            parseInt(localStorage.setItem("i",i++));
             //add item to UI
             addItem(obj,i);
         }
@@ -60,14 +63,15 @@ ex_s.addEventListener("click",function(){
     const a=document.getElementById("ea").value.trim();
     if(t && n && a){
         if(editindex != null){
-            list[editindex]={id:editindex,ie:"expense",type:t,name:n,amount:a};
-            editItem(list[editindex],editindex);
+            list[editindex]={id:parseInt(list[editindex].id),iore:divexpense,type:t,name:n,amount:a};
+            editItem(list[editindex],list[editindex].id);
             editindex=null;
         }
         else {
-            let obj={id:i,ie:"expense",type:t,name:n,amount:a};
+            let obj={id:i,iore:divexpense,type:t,name:n,amount:a};
             list.push(obj);   
             i++;
+            parseInt(localStorage.getItem("i",i++));
             //add item to UI       
             addItem(obj,i);
             //display(obj);
@@ -87,26 +91,27 @@ function addItem(object){
     newItem.id = object.id;
     newItem.classList.remove("hidden");
     //newItem.querySelector(".btn").innerElement=newItem.createTextNode("edit");
-    newItem.querySelector(".ie").innerText=object.ie || "N/A";
+    newItem.querySelector(".iore").innerText=object.iore || "N/A";
     newItem.querySelector(".type").innerText=object.type || "N/A";
     newItem.querySelector(".name").innerText=object.name || "N/A";
-    newItem.querySelector(".amount").innerText=object.amount || "N/A";
+    newItem.querySelector(".amount").innerText="₹"+object.amount || "N/A";
     newItem.querySelector(".btn1").setAttribute("onclick", `edit('${object.id}')`);
     newItem.querySelector(".btn2").setAttribute("onclick", `del('${object.id}')`);
-    newItem.classList.add(object.ie);
+    newItem.classList.add(object.iore);
     itemList.appendChild(newItem);
     // var newdiv=document.createElement("div");
     // newdiv.classList.add("items");
 };
-function editItem(object,index){
+function editItem(object,id){
     //also can use let str = `${index}`;
-    var change=document.getElementById(index);
-    change.querySelector(".ie").innerText=object.ie || "N/A";
+    var change=document.getElementById(id);
+    change.querySelector(".iore").innerText=object.iore || "N/A";
     change.querySelector(".type").innerText=object.type || "N/A";
     change.querySelector(".name").innerText=object.name || "N/A";
-    change.querySelector(".amount").innerText=object.amount || "N/A";
+    change.querySelector(".amount").innerText="₹"+object.amount || "N/A";
     change.querySelector(".btn1").setAttribute("onclick", `edit('${object.id}')`);
     change.querySelector(".btn2").setAttribute("onclick", `del('${object.id}')`);
+    //change.classList.add(object.iore);
 }
 function clearInputFieldsi() {
     document.getElementById("it").value = "";
@@ -118,24 +123,31 @@ function clearInputFieldse() {
     document.getElementById("en").value = "";
     document.getElementById("ea").value = "";
 }
-function edit(index){
-    editindex=index;
-    if (list[index].ie== "income"){
+function edit(id){
+    let k="id";
+    let val=parseInt(id);
+    let objIndex = list.findIndex(
+        (temp) => temp[k] === val
+    );
+    debugger;
+    editindex=objIndex;
+    if (list[objIndex].iore== divincome){
         popupi.classList.toggle("show");
-        document.getElementById("it").value = list[index].type;
-        document.getElementById("in").value = list[index].name;
-        document.getElementById("ia").value = list[index].amount;
-        balance-=parseInt(list[index].amount);
-        income_a-=parseInt(list[index].amount);
+        document.getElementById("it").value = list[objIndex].type;
+        document.getElementById("in").value = list[objIndex].name;
+        document.getElementById("ia").value = list[objIndex].amount;
+        balance-=parseInt(list[objIndex].amount);
+        income_a-=parseInt(list[objIndex].amount);
     }
-    else if(list[index].ie=="expense"){
+    else if(list[objIndex].iore==divexpense){
         popupe.classList.toggle("show");
-        document.getElementById("et").value = list[index].type;
-        document.getElementById("en").value = list[index].name;
-        document.getElementById("ea").value = list[index].amount;
-        balance+=parseInt(list[index].amount);
-        expense_a-=parseInt(list[index].amount);
+        document.getElementById("et").value = list[objIndex].type;
+        document.getElementById("en").value = list[objIndex].name;
+        document.getElementById("ea").value = list[objIndex].amount;
+        balance+=parseInt(list[objIndex].amount);
+        expense_a-=parseInt(list[objIndex].amount);
     }
+    console.log(list[objIndex]);
 }
 function del(index){
     let k="id";
@@ -143,11 +155,12 @@ function del(index){
     let objIndex = list.findIndex(
         (temp) => temp[k] === val
     );
-    if(list[objIndex].ie=="income"){
+    debugger;
+    if(list[objIndex].iore==divincome){
         balance-=parseInt(list[objIndex].amount);
         income_a-=parseInt(list[objIndex].amount);
     }
-    else if(list[objIndex].ie=="expense"){
+    else if(list[objIndex].iore==divexpense){
         balance+=parseInt(list[objIndex].amount);
         expense_a-=parseInt(list[objIndex].amount);
     }
@@ -200,7 +213,6 @@ function clearAll(){
     const nListin=document.querySelectorAll(".income");
     const nListex=document.querySelectorAll(".expense");
     list=[];
-    blist=[];
     i=0;
     balance=0;
     income_a=0;
@@ -216,6 +228,8 @@ function clearAll(){
     localStorage.setItem("amount",0);
     localStorage.setItem("income_a",0);
     localStorage.setItem("expense_a",0);
+    localStorage.setItem("i",0);
+    filter("all");
 }
 //dynamic balance
 function bal(b,inc,ex){
@@ -235,15 +249,16 @@ function display(list){
         newItem.id = object.id;
         newItem.classList.remove("hidden");
         //newItem.querySelector(".btn").innerElement=newItem.createTextNode("edit");
-        newItem.querySelector(".ie").innerText=object.ie || "N/A";
+        newItem.querySelector(".iore").innerText=object.iore || "N/A";
         newItem.querySelector(".type").innerText=object.type || "N/A";
         newItem.querySelector(".name").innerText=object.name || "N/A";
-        newItem.querySelector(".amount").innerText=object.amount || "N/A";
+        newItem.querySelector(".amount").innerText="₹"+ object.amount || "N/A";
         newItem.querySelector(".btn1").setAttribute("onclick", `edit('${object.id}')`);
         newItem.querySelector(".btn2").setAttribute("onclick", `del('${object.id}')`);
-        newItem.classList.add(object.ie);
+        newItem.classList.add(object.iore);
         itemList.appendChild(newItem);
     });
+    let i=parseInt(localStorage.getItem("i")) ||0;
 }
 function displayb(){
     document.getElementById("s1").textContent=localStorage.getItem("amount");

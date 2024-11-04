@@ -54,7 +54,7 @@
 	<div class="add-pope">
 		<form>
 			<select name="type" id="et" required>
-				<option value="monthly expense">Monthly Expense</option>
+				<option value="maintance">Maintance</option>
 				<option value="housing">Housing</option>
 				<option value="tax">Tax</option>
 				<option value="savings">Savings</option>
@@ -68,24 +68,8 @@
 			<input type="button" value="submit" id="expense-submit" required>
 		</form>
 	</div>
-	<div class="edit-pop">
-		<form>
-			<select name="type" id="it">
-				<option value="salary">Salary</option>
-				<option value="passive">Passive</option>
-				<option value="investment">Investment</option>
-				<option value="others">Others</option>
-			</select>
-			<input type="text" id="in" placeholder="name">
-			<input type="number" id="ia" placeholder="₹">
-			<input type="button" value="submit" id="income-submit">
-		</form>
-	</div>
 	<div class="con-list">
 		<div class="filter">
-			<div> 
-				<button onclick="clearAll()">Restart</button>
-			</div>
 			<div id="filterinput"> 
 				<input type="radio" id="All" name="f" onclick="filter('all')" checked><label>All</label>
 				<input type="radio" id="INCOME" name="f" onclick="filter('income')"><label>Income</label>
@@ -93,20 +77,6 @@
 			</div>
 						
 		</div>
-		<!-- <div class="list">
-			<div class="items">
-				<div class="s"><button class="btn" onclick="">Reset</button></div>
-				<div class="b">
-					<div class="name">Name</div>
-					<div class="dis">
-						<div class="ie"></div>
-						<div></div>
-						<div class="type"></div>
-					</div>									
-				</div>
-				<div class="amount s">Amount</div>				
-			</div>
-		</div> -->
 		<div class="list">
 			<div id="item" class="items hidden">
 				<div class="s">
@@ -118,7 +88,7 @@
 				<div class="b">
 					<div class="name"></div>
 					<div class="dis">
-						<div class="ie"></div>
+						<div class="iore"></div>
 						<div>:</div>
 						<div class="type"></div>
 					</div>									
@@ -126,17 +96,20 @@
 				<div class="amount s"></div>				
 			</div>
 			<div class="items">
-				<div class="s"><button class="btn" onclick="">Reset</button></div>
+				<div class="s">Edit</div>
 				<div class="b">
 					<div class="name">Name</div>
 					<div class="dis">
-						<div class="ie"></div>
+						<div class="iore"></div>
 						<div></div>
 						<div class="type"></div>
 					</div>									
 				</div>
 				<div class="amount s">Amount</div>				
 			</div>
+		</div>
+		<div class="end">
+				<button onclick="clearAll()">Restart</button>
 		</div>
 	</div>
 	<script src="script.js"></script>
