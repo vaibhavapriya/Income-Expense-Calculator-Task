@@ -32,7 +32,7 @@ This is a web-based Income Expense Calculator that allows users to track their i
     - [Sign up for a Netlify account](https://www.netlify.com/) if you don’t have one.
     - Netlify will provide a unique URL to access your hosted site.
 
-## How the Calculator Works
+## How the Calculator Balance
 
 1. **Adding Entries**:
     - Click the **Income** or **Expense** button to open the popup form.
