@@ -47,7 +47,6 @@ in_s.addEventListener("click",function(){
         //change con-head
         balance+=parseInt(a);
         income_a+=parseInt(a);
-        debugger;
     }
     clearInputFieldsi();
     popupi.classList.toggle("show");
@@ -137,7 +136,6 @@ function edit(index){
         balance+=parseInt(list[index].amount);
         expense_a-=parseInt(list[index].amount);
     }
-    debugger;
 }
 function del(index){
     let k="id";
@@ -226,8 +224,7 @@ function bal(b,inc,ex){
     document.getElementById("s3").textContent=ex;
     localStorage.setItem("amount",b);
     localStorage.setItem("income_a",inc);
-    localStorage.setItem("expense_a",ex);   
-    debugger;
+    localStorage.setItem("expense_a",ex); 
 }
 //reload().addEventListener("click")
 // reload the current page
