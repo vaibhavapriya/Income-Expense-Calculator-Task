@@ -21,7 +21,7 @@ body{
     display: flex;
     flex-direction: column;
     /* background-color: aqua; */
-    background-color: rgba(183,185,210,255);
+    background-color: rgba(231,207,255,255);
     padding: 20px;
     align-items: center;
     justify-content: center;
@@ -46,7 +46,7 @@ h2{
     justify-content: space-around;
 }
 .con-add button{
-    background-color: rgba(183,185,210,255);
+    background-color: rgba(231,207,255,255);
     padding: 10px;
     border-radius: 10px;
     border: none;
@@ -96,7 +96,7 @@ input,select{
     flex-direction:column ;
     justify-content: center;
     align-items: center;
-    background-color: rgba(183,185,210,255);
+    background-color:rgba(231,207,255,255);
     border-radius: 30px;
 }
 .filter ,.list{   
@@ -121,10 +121,12 @@ input,select{
 }
 /* dom */
 .income{
-    background-color: rgba(159,203,210,255);
+    /* background-color: rgba(159,203,210,255); */
+    background-color: rgba(203,241,196,255);
 }
 .expense{
-    background-color: rgba(170,140,190,255);
+    /* background-color: rgba(170,140,190,255); */
+    background-color: rgba(205,233,255,255);
 }
 .s{
     width:24%;
@@ -149,7 +151,7 @@ input,select{
 i{
     font-size: medium;
     padding: 2px;
-    background-color: rgba(183,185,210,255);
+    background-color: rgba(231,207,255,255);
     border:rgba(183,185,210,255);
 }
 .btn2 i:hover{
