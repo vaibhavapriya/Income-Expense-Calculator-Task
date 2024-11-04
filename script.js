@@ -14,6 +14,10 @@ const item=document.getElementById("item");
 list=[];
 var i=0;
 var editindex=null;
+//balance,income,expense(header)
+let balance=0;
+let income_a=0;
+let expense_a=0;
 //on click for popup
 in_b.addEventListener("click",function(){
     popupi.classList.toggle("show");
@@ -42,11 +46,16 @@ in_s.addEventListener("click",function(){
             i++;
             //add item to UI
             addItem(obj,i);
-            //change con-head
         }
+        //change con-head
+        balance+=parseInt(a);
+        income_a+=parseInt(a);
     }
     clearInputFieldsi();
     popupi.classList.toggle("show");
+    refreshFilter();
+    bal(balance,income_a,expense_a);
+    
 });
 ex_s.addEventListener("click",function(){
     const t=document.getElementById("et").value.trim();
@@ -64,14 +73,17 @@ ex_s.addEventListener("click",function(){
             i++;
             //add item to UI       
             addItem(obj,i);
-             //change con-head
         }
+        //change con-head
+        balance-=parseInt(a);
+        expense_a+=parseInt(a);
     }
     clearInputFieldse();
     popupe.classList.toggle("show");
+    refreshFilter();
+    bal(balance,income_a,expense_a);
 });
 //change header display
-//filter
 //pie chart
 function addItem(object,index){
     const newItem = item.cloneNode(true);
@@ -116,14 +128,17 @@ function edit(index){
         document.getElementById("it").value = list[index].type;
         document.getElementById("in").value = list[index].name;
         document.getElementById("ia").value = list[index].amount;
+        balance-=parseInt(list[index].amount);
+        income_a-=parseInt(list[index].amount);
     }
     else if(list[index].ie=="expense"){
         popupe.classList.toggle("show");
         document.getElementById("et").value = list[index].type;
         document.getElementById("en").value = list[index].name;
         document.getElementById("ea").value = list[index].amount;
+        balance+=parseInt(list[index].amount);
+        expense_a-=parseInt(list[index].amount);
     }
-    //editpop.classList.toggle("show");
 }
 function del(index){
     let k="id";
@@ -131,11 +146,21 @@ function del(index){
     let objIndex = list.findIndex(
         (temp) => temp[k] === val
     );
+    if(list[objIndex].ie=="income"){
+        balance-=parseInt(list[objIndex].amount);
+        income_a-=parseInt(list[objIndex].amount);
+    }
+    else if(list[objIndex].ie=="expense"){
+        balance+=parseInt(list[objIndex].amount);
+        expense_a-=parseInt(list[objIndex].amount);
+    }
     list.splice(objIndex,1);
     var d=document.getElementById(index);
     d.remove();
+    bal(balance,income_a,expense_a);
 }
 function filter(cat){
+    //classes income and expense
     const nListin=document.querySelectorAll(".income");
     const nListex=document.querySelectorAll(".expense");
     if(cat=="all"){       
@@ -162,7 +187,38 @@ function filter(cat){
             nListex[j].classList.remove("hidden");
         }
     }
-    debugger;
+}
+function refreshFilter(){
+    let x=document.getElementsByName("f");
+    x[0].checked= true;
+    for(var j=1;j<x.length;j++){
+        x[j].checked = false;
+    }
+    filter("all");
+}
+//clear list
+function clearAll(){
+    //classes income and expense
+    const nListin=document.querySelectorAll(".income");
+    const nListex=document.querySelectorAll(".expense");
+    list=[];
+    i=0;
+    balance=0;
+    income_a=0;
+    expense_a=0;
+    bal(balance,income_a,expense_a);
+    for(j=0;j<nListin.length;j++){
+        nListin[j].remove();
+    }      
+    for(j=0;j<nListex.length;j++){
+        nListex[j].remove();
+    }
+
+}
+//dynamic balance
+function bal(b,inc,ex){
+    document.getElementById("s1").textContent=b;
+    document.getElementById("s2").textContent=inc;
+    document.getElementById("s3").textContent=ex;
 }
 
-//for filter we can use hidden function

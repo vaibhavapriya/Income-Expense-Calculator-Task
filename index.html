@@ -25,8 +25,8 @@
 	<div class="container">
 		<div class="con-head">
 			<!-- balance -->
-			<div class="line1"><h1>BALANCE: ₹0</h1></div>
-			<div class="line2"><h2>INCOME: ₹0 </h2><h2>EXPENSE: ₹0</h2></div>
+			<div class="line1"><h1>BALANCE: ₹<span id="s1">0</span></h1></div>
+			<div class="line2"><h2>INCOME: ₹<span id="s2">0</span> </h2><h2>EXPENSE: ₹<span id="s3">0</span></h2></div>
 		</div>
 	</div>
 	<div class="con-add">
@@ -84,12 +84,12 @@
 	<div class="con-list">
 		<div class="filter">
 			<div> 
-				<button>Restart</button>
+				<button onclick="clearAll()">Restart</button>
 			</div>
-			<div> 
-				<input type="radio" value="All" name="f" onclick="filter('all')" checked><label>All</label>
-				<input type="radio" value="INCCOME" name="f" onclick="filter('income')"><label>Income</label>
-				<input type="radio" value="EXPENSE" name="f" onclick="filter('expense')"><label>Expense</label>
+			<div id="filterinput"> 
+				<input type="radio" id="All" name="f" onclick="filter('all')" checked><label>All</label>
+				<input type="radio" id="INCOME" name="f" onclick="filter('income')"><label>Income</label>
+				<input type="radio" id="EXPENSE" name="f" onclick="filter('expense')"><label>Expense</label>
 			</div>
 						
 		</div>
