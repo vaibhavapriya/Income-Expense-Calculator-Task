@@ -13,6 +13,13 @@
       integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
       crossorigin="anonymous"
     />
+	<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/solid.min.css"
+      integrity="sha512-/r+0SvLvMMSIf41xiuy19aNkXxI+3zb/BN8K9lnDDWI09VM0dwgTMzK7Qi5vv5macJ3VH4XZXr60ip7v13QnmQ=="
+      crossorigin="anonymous"
+    />
+	
 </head>
 <body>
 	<div class="container">
@@ -61,49 +68,62 @@
 			<input type="button" value="submit" id="expense-submit" required>
 		</form>
 	</div>
+	<div class="edit-pop">
+		<form>
+			<select name="type" id="it">
+				<option value="salary">Salary</option>
+				<option value="passive">Passive</option>
+				<option value="investment">Investment</option>
+				<option value="others">Others</option>
+			</select>
+			<input type="text" id="in" placeholder="name">
+			<input type="number" id="ia" placeholder="₹">
+			<input type="button" value="submit" id="income-submit">
+		</form>
+	</div>
 	<div class="con-list">
 		<div class="filter">
 			<div> 
 				<button>Restart</button>
 			</div>
 			<div> 
-				<label><input type="radio" value="All" name="">All</label>
-				<label><input type="radio" value="All" name="">Income</label>
-				<label><input type="radio" value="All" name="">Expense</label>
+				<input type="radio" value="All" name="f" checked><label>All</label>
+				<input type="radio" value="INCCOME" name="f"><label>Income</label>
+				<input type="radio" value="EXPENSE" name="f"><label>Expense</label>
 			</div>
 						
 		</div>
 		<div class="list">
 			<div id="item" class="items hidden">
-				<div><button class="btn" onclick="">edit</button></div>
-				<div>
-					<div class="ie"></div>
-					<div class="type"></div>
-					<div class="name"></div>
+				<div class="s">
+					<!-- <img src="images\trash-can-solid.svg"> -->
+					<!-- <img src="images\pen-to-square-solid.svg"> -->
+					<button class="btn1" onclick="edit(id)"><i class="fas fa-edit"></i></button>
+					<button class="btn2" onclick="del(id)"><i class="fa fa-solid fa-trash-alt"></i></button>
 				</div>
-				<div class="amount"></div>				
+				<div class="b">
+					<div class="name"></div>
+					<div class="dis">
+						<div class="ie"></div>
+						<div>:</div>
+						<div class="type"></div>
+					</div>									
+				</div>
+				<div class="amount s"></div>				
 			</div>
 			<div class="items">
-				<div><button>edit icon</button></div>
-				<div>
-					<div class="ie">income/expense</div>
-					<div class="type">catogery</div>
-					<div class="amount">name</div>
+				<div class="s"><button class="btn" onclick="">Reset</button></div>
+				<div class="b">
+					<div class="name">Name</div>
+					<div class="dis">
+						<div class="ie"></div>
+						<div></div>
+						<div class="type"></div>
+					</div>									
 				</div>
-				<div>amount</div>
-				
+				<div class="amount s">Amount</div>				
 			</div>
 		</div>
-		<!-- <div class="data">			
-			<div class="on-hover">
-				<div>
-					<button><i></i>pen</button>
-				</div>
-				<div>
-					<button><i></i>dustbin</button>
-				</div>
-			</div>
-		</div> -->
 	</div>
 	<div class="con-end">
 		<div>

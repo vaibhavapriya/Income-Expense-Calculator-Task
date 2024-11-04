@@ -15,7 +15,7 @@ body{
     justify-content: center;
 }
 .container{
-    width: 100vw;
+    width: 100%;
 }
 .con-head{
     display: flex;
@@ -38,7 +38,7 @@ h2{
 }
 .con-add{
     margin-top: 25px;
-    width: 100vw;
+    width: 100%;
     padding: 20px;
     display: flex;
     flex-direction: row;
@@ -51,7 +51,7 @@ h2{
     border: none;
     cursor: pointer;
 }
-.add-popi,.add-pope {
+.add-popi,.add-pope ,.edit-pop{
     width: 75%;
     display: flex;
     flex-direction: row;
@@ -114,7 +114,22 @@ input,select{
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding-top: 10px;
+}
+.s{
+    width:25%;
+}
+.b{
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.dis{
+    display: flex;
+    flex-direction: row;
+}
+.name{
+    font-size: large;
 }
 .hidden {
     display: none;
@@ -132,14 +147,12 @@ input,select{
         color: rgb(145, 45, 227); 
     }  
 }
-
 /* Add animation (fade in the popup) */
 @-webkit-keyframes fadeIn {
     from {opacity: 0;} 
     to {opacity: 1;}
-  }
-  
+}  
   @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity:1 ;}
-  }
+}
