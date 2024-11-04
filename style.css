@@ -20,7 +20,8 @@ body{
 .con-head{
     display: flex;
     flex-direction: column;
-    background-color: aqua;
+    /* background-color: aqua; */
+    background-color: rgba(183,185,210,255);
     padding: 20px;
     align-items: center;
     justify-content: center;
@@ -45,25 +46,32 @@ h2{
     justify-content: space-around;
 }
 .con-add button{
-    background-color: aqua;
+    background-color: rgba(183,185,210,255);
     padding: 10px;
     border-radius: 10px;
     border: none;
     cursor: pointer;
 }
-.add-popi,.add-pope ,.edit-pop{
-    width: 75%;
+.add-popi,.add-pope{
+    width: 400px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    background-color: aliceblue;
-    border-style: solid;
-    border-color: aqua;
+    background-color: rgb(233, 233, 233);
+    /* border-style: solid; */
+    /* //border-color: aqua; */
     padding: 30px;
     border-radius: 20px;
     position: fixed;
     margin-top: 190px;
     visibility: hidden;
+    /*  position: absolute; */
+}
+#income-submit,#expense-submit{
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    /* background-color: rgba(183,185,210,255); */
+    background-color: rgba(170,140,190,255);
     /*  position: absolute; */
 }
 /* dom */
@@ -88,32 +96,38 @@ input,select{
     flex-direction:column ;
     justify-content: center;
     align-items: center;
-    background-color: aqua;
+    background-color: rgba(183,185,210,255);
     border-radius: 30px;
 }
 .filter ,.list{   
-    padding: 20px;
+    padding:20px 20px 0px 20px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;   
 }
-
 .items{
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: space-between;
-    background-color:aquamarine;
+    /* background-color:rgb(85, 240, 235); */ 
     padding:20px 5px 5px 5px ;
     border-radius: 10px;
     margin-top:5px ;
 }
+/* dom */
+.income{
+    background-color: rgba(159,203,210,255);
+}
+.expense{
+    background-color: rgba(170,140,190,255);
+}
 .s{
-    width:20%;
+    width:24%;
     display: flex;
     flex-direction: row;
     justify-content:space-evenly;
@@ -135,8 +149,8 @@ input,select{
 i{
     font-size: medium;
     padding: 2px;
-    background-color: aquamarine;
-    border: aquamarine;
+    background-color: rgba(183,185,210,255);
+    border:rgba(183,185,210,255);
 }
 .btn2 i:hover{
     color: rgb(143, 6, 6);
@@ -145,12 +159,12 @@ i{
     color: rgb(36, 143, 6);
 }
 .end{
-    padding: 15px;
+    padding: 20px;
 }
 .end button{
-    padding: 5px;
+    padding: 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: rgba(255, 79, 79, 0.937);
 }
 .hidden {
@@ -158,16 +172,67 @@ i{
 }
 @media only screen and (min-width: 600px) {
     h1{
-        font-size: 40px;
-        color: rgb(145, 45, 227); 
+        font-size: 40px; 
     } 
-    
-}
-@media only screen and (min-width: 1022px) { 
-    h1{
-        font-size: 40px;
-        color: rgb(145, 45, 227); 
+    h2{
+        font-size: medium;
     }  
+    .name{
+        font-size: large;
+        font-weight: bold;
+    }
+    .dis,.amount{
+        font-size: medium;
+    }
+    .con-add button{
+        font-size: medium;
+    }
+    .end button{
+        font-size: medium;
+    }
+    .con-list,.con-add{
+        width: 80%;
+        font-size: larger;
+    }
+}
+@media only screen and (min-width: 1001px) {
+    /* min-width: 1022px  */
+    h1{
+        font-size: 50px;
+    }
+    .line2 {
+        width: 70%;    
+    }
+    h2{
+        font-size: large;
+    } 
+    .con-list,.con-add{
+        width: 70%;
+        font-size: larger;
+    }
+    .add-popi,.add-pope{
+        width: 60%;
+    }
+    form{
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    .name{
+        font-size: larger;
+        font-weight: bold;
+    }
+    .dis,.amount{
+        font-size: large;
+    }
+    .con-add button{
+        font-size: large;
+    }
+    .end button{
+        font-size: large;
+    }
+
 }
 /* Add animation (fade in the popup) */
 @-webkit-keyframes fadeIn {

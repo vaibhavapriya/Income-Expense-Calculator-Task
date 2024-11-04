@@ -46,7 +46,7 @@
 				<option value="investment">Investment</option>
 				<option value="others">Others</option>
 			</select>
-			<input type="text" id="in" placeholder="name">
+			<input type="text" id="in" placeholder="eg:rent">
 			<input type="number" id="ia" placeholder="₹">
 			<input type="button" value="submit" id="income-submit">
 		</form>
@@ -54,7 +54,7 @@
 	<div class="add-pope">
 		<form>
 			<select name="type" id="et" required>
-				<option value="maintance">Maintance</option>
+				<option value="maintance">Maintenance</option>
 				<option value="housing">Housing</option>
 				<option value="tax">Tax</option>
 				<option value="savings">Savings</option>
@@ -63,7 +63,7 @@
 				<option value="shopping">Shopping</option>
 				<option value="others">Others</option>
 			  </select>
-			<input type="text" id="en" placeholder="name" required>
+			<input type="text" id="en" placeholder="eg:rent" required>
 			<input type="number" id="ea"  placeholder="₹" required>
 			<input type="button" value="submit" id="expense-submit" required>
 		</form>
@@ -74,8 +74,7 @@
 				<input type="radio" id="All" name="f" onclick="filter('all')" checked><label>All</label>
 				<input type="radio" id="INCOME" name="f" onclick="filter('income')"><label>Income</label>
 				<input type="radio" id="EXPENSE" name="f" onclick="filter('expense')"><label>Expense</label>
-			</div>
-						
+			</div>			
 		</div>
 		<div class="list">
 			<div id="item" class="items hidden">
@@ -95,10 +94,10 @@
 				</div>
 				<div class="amount s"></div>				
 			</div>
-			<div class="items">
+			<!-- <div class="items">
 				<div class="s"></div>
 				<div class="b">
-					<div class="name">Expense</div>
+					<div class="">Expense</div>
 					<div class="dis">
 						<div class="iore"></div>
 						<div></div>
@@ -106,7 +105,7 @@
 					</div>									
 				</div>
 				<div class="amount s">Amount</div>				
-			</div>
+			</div> -->
 		</div>
 		<div class="end">
 				<button onclick="clearAll()">Restart</button>
