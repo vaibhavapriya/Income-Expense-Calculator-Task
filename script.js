@@ -12,12 +12,12 @@ const ex_s=document.getElementById("expense-submit");
 const itemList = document.getElementsByClassName("list")[0];
 const item=document.getElementById("item");
 list = JSON.parse(localStorage.getItem("list")) || [];
-var i=0;
+var i=list.length;
 var editindex=null;
-//balance,income,expense(header)
-let balance=0;
-let income_a=0;
-let expense_a=0;
+//balance,income,expense(header)let balance=0;
+let balance=parseInt(localStorage.getItem("amount")) || 0 ;
+let income_a=parseInt(localStorage.getItem("income_a")) || 0;
+let expense_a=parseInt(localStorage.getItem("expense_a")) ||0;
 //on click for popup
 in_b.addEventListener("click",function(){
     popupi.classList.toggle("show");
@@ -36,12 +36,8 @@ in_s.addEventListener("click",function(){
             editindex=null;
         }
         else {
-            let obj={};
-            obj.id=i;   
-            obj.ie="income";
-            obj.type=t;
-            obj.name=n;
-            obj.amount=a;
+            //let obj={};obj.id=i;    obj.ie="income";obj.type=t;obj.name=n;obj.amount=a;
+            let obj={id:i,ie:"income",type:t,name:n,amount:a};
             list.push(obj);
             i++;
             //add item to UI
@@ -51,6 +47,7 @@ in_s.addEventListener("click",function(){
         //change con-head
         balance+=parseInt(a);
         income_a+=parseInt(a);
+        debugger;
     }
     clearInputFieldsi();
     popupi.classList.toggle("show");
@@ -74,6 +71,7 @@ ex_s.addEventListener("click",function(){
             i++;
             //add item to UI       
             addItem(obj,i);
+            //display(obj);
         }
         localStorage.setItem("list", JSON.stringify(list));
         //change con-head
@@ -85,8 +83,6 @@ ex_s.addEventListener("click",function(){
     refreshFilter();
     bal(balance,income_a,expense_a);
 });
-//change header display
-//pie chart
 function addItem(object){
     const newItem = item.cloneNode(true);
     newItem.id = object.id;
@@ -125,7 +121,7 @@ function clearInputFieldse() {
 }
 function edit(index){
     editindex=index;
-    if (list[index].ie=="income"){
+    if (list[index].ie== "income"){
         popupi.classList.toggle("show");
         document.getElementById("it").value = list[index].type;
         document.getElementById("in").value = list[index].name;
@@ -141,6 +137,7 @@ function edit(index){
         balance+=parseInt(list[index].amount);
         expense_a-=parseInt(list[index].amount);
     }
+    debugger;
 }
 function del(index){
     let k="id";
@@ -205,6 +202,7 @@ function clearAll(){
     const nListin=document.querySelectorAll(".income");
     const nListex=document.querySelectorAll(".expense");
     list=[];
+    blist=[];
     i=0;
     balance=0;
     income_a=0;
@@ -216,19 +214,26 @@ function clearAll(){
     for(j=0;j<nListex.length;j++){
         nListex[j].remove();
     }
-
+    localStorage.setItem("list", JSON.stringify(list));
+    localStorage.setItem("amount",0);
+    localStorage.setItem("income_a",0);
+    localStorage.setItem("expense_a",0);
 }
 //dynamic balance
 function bal(b,inc,ex){
     document.getElementById("s1").textContent=b;
     document.getElementById("s2").textContent=inc;
     document.getElementById("s3").textContent=ex;
+    localStorage.setItem("amount",b);
+    localStorage.setItem("income_a",inc);
+    localStorage.setItem("expense_a",ex);   
+    debugger;
 }
 //reload().addEventListener("click")
 // reload the current page
 //window.location.reload();
 function display(list){
-    list.forEach(function (item) {
+    list.forEach(function (object) {
         const newItem = item.cloneNode(true);
         newItem.id = object.id;
         newItem.classList.remove("hidden");
@@ -243,5 +248,12 @@ function display(list){
         itemList.appendChild(newItem);
     });
 }
-
+function displayb(){
+    document.getElementById("s1").textContent=localStorage.getItem("amount");
+    document.getElementById("s2").textContent=localStorage.getItem("income_a") ;
+    document.getElementById("s3").textContent=localStorage.getItem("expense_a") ;
+}
+// storage display
+display(list);
+displayb();
 
